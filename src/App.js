@@ -18,10 +18,14 @@ function App() {
     return Math.max(...arr);
   };
 
+  // if no changes happen to dependencies then always return the same function
+  // useful when passing functions to child components that we dont want to rereender
+
   const memoizedCallback = useCallback((number) => {
     changeChildNumber(number);
   }, []);
 
+  // useful if we dont want to rerun function when dependencies dont change
   const useMemoizedValue = () => {
     return useMemo(() => getlargestnumber(), [arr]);
   };
